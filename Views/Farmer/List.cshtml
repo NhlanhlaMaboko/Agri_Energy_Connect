@@ -1,0 +1,28 @@
+﻿@model IEnumerable<AgriEnergy_Connect.Models.Farmer>
+@{
+    ViewData["Title"] = "Farmer List";
+}
+
+<h2 class="mb-4">📋 Registered Farmers</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Contact Number</th>
+            <th>Location</th>
+            <th>Registration Source</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var farmer in Model)
+        {
+            <tr>
+                <td>@farmer.Name</td>
+                <td>@farmer.ContactNumber</td>
+                <td>@farmer.Location</td>
+                <td>@farmer.RegistrationSource</td>
+            </tr>
+        }
+    </tbody>
+</table>

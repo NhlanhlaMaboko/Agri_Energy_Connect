@@ -1,0 +1,72 @@
+﻿@using AgriEnergy_Connect.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-success">🌱 Welcome to AgriEnergy Connect</h1>
+        <p class="lead text-muted">Empowering sustainable agriculture through secure, role-based data management</p>
+    </div>
+
+    <!-- Unified row: 5 equal cards -->
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm">
+                <img src="~/images/dairy.jpg" class="card-img-top" alt="Dairy">
+                <div class="card-body">
+                    <h5 class="card-title text-success">🥛 Dairy</h5>
+                    <p class="card-text">Milk, cheese, and yogurt from trusted local farms.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm">
+                <img src="~/images/meat.jpg" class="card-img-top" alt="Meat">
+                <div class="card-body">
+                    <h5 class="card-title text-success">🥩 Meat</h5>
+                    <p class="card-text">High-quality livestock products with traceable origins.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm">
+                <img src="~/images/grains.jpg" class="card-img-top" alt="Grains">
+                <div class="card-body">
+                    <h5 class="card-title text-success">🌾 Grains</h5>
+                    <p class="card-text">Maize, wheat, and sorghum grown sustainably.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm">
+                <img src="~/images/vegetables.jpg" class="card-img-top" alt="Vegetables">
+                <div class="card-body">
+                    <h5 class="card-title text-success">🥬 Vegetables</h5>
+                    <p class="card-text">Tomatoes, spinach, carrots, and more  fresh from the field.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm">
+                <img src="~/images/fruits.jpg" class="card-img-top" alt="Fruits">
+                <div class="card-body">
+                    <h5 class="card-title text-success">🍎 Fruits</h5>
+                    <p class="card-text">Apples, bananas, grapes, and strawberries locally harvested.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action buttons (only for signed-in users) -->
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <div class="text-center mt-5">
+            <a class="btn btn-success btn-lg me-2" asp-controller="Product" asp-action="Create">➕ Add Product</a>
+            <a class="btn btn-outline-primary btn-lg" asp-controller="Product" asp-action="MyProducts">📦 My Products</a>
+        </div>
+    }
+</div>

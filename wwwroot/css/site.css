@@ -1,0 +1,105 @@
+/* Base font and layout */
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+/* Navbar branding */
+.navbar-brand {
+    font-weight: bold;
+    color: #198754 !important;
+}
+
+/* Navbar auth links */
+.nav-auth {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #198754 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Card styling for homepage */
+.card {
+    border: none;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    margin-bottom: 1rem;
+}
+
+.card-img-top {
+    height: 160px;
+    object-fit: cover;
+    border-radius: 0.5rem 0.5rem 0 0;
+    background-color: #e9ecef;
+    display: block;
+    width: 100%;
+}
+
+.card-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #198754;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Buttons */
+.btn-lg {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Table styling */
+.table th {
+    background-color: #343a40;
+    color: white;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* Header text */
+h1.display-4,
+h1.display-5 {
+    font-family: 'Segoe UI', sans-serif;
+    color: #198754;
+}
+
+/* Footer */
+footer {
+    background-color: #ffffff;
+    border-top: 1px solid #dee2e6;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6c757d;
+}

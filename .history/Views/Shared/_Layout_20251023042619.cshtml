@@ -1,0 +1,40 @@
+﻿using AgriEnergy_Connect.Data;
+using AgriEnergy_Connect.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+
+[Authorize(Roles = "Farmer")]
+public class ProductController : Controller
+{
+    private readonly ApplicationDbContext _context;
+
+    public ProductController(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<IActionResult> MyProducts()
+    {
+        // Get the currently logged-in user's ID
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        // Fetch products for this farmer
+        var products = await _context.Products
+            .Include(p => p.Farmer)
+            .Where(p => p.Farmer.ApplicationUserId == userId)
+            .ToListAsync();
+
+        // Force a specific view path
+        return View("~/Views/Products/MyProducts.cshtml", products);
+    }
+
+    // Optional: add an AllProducts action for Employee role
+    [Authorize(Roles = "Employee")]
+    public async Task<IActionResult> AllProducts()
+    {
+        var products = await _context.Products.Include(p => p.Farmer).ToListAsync();
+        return View("~/Views/Products/AllProducts.cshtml", products);
+    }
+}

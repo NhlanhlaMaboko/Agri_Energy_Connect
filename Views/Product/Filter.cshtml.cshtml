@@ -1,0 +1,67 @@
+﻿@model AgriEnergy_Connect.ViewModels.ProductFilterViewModel
+@{
+    ViewData["Title"] = "Filter Products";
+}
+
+<h2>🔍 Filter Products</h2>
+
+<form asp-action="Filter" method="post" class="row g-3">
+    <div class="col-md-3">
+        <label>Farmer</label>
+        <select asp-for="FarmerId" asp-items="Model.Farmers" class="form-select">
+            <option value="">-- All Farmers --</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label>Category</label>
+        <input asp-for="Category" class="form-control" placeholder="e.g. Vegetables" />
+    </div>
+    <div class="col-md-3">
+        <label>Subcategory</label>
+        <input asp-for="Subcategory" class="form-control" placeholder="e.g. Tomatoes" />
+    </div>
+    <div class="col-md-3">
+        <label>From</label>
+        <input asp-for="FromDate" type="date" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label>To</label>
+        <input asp-for="ToDate" type="date" class="form-control" />
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Apply Filters</button>
+    </div>
+</form>
+
+@if (Model.Products.Any())
+{
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Subcategory</th>
+                <th>Price</th>
+                <th>Production Date</th>
+                <th>Farmer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.Products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Category</td>
+                    <td>@product.Subcategory</td>
+                    <td>@product.Price.ToString("C")</td>
+                    <td>@product.ProductionDate.ToShortDateString()</td>
+                    <td>@product.Farmer?.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="mt-4 text-muted">No products match the selected filters.</p>
+}

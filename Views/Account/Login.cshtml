@@ -1,0 +1,22 @@
+﻿@model Login
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Login</h2>
+
+    <form asp-action="Login" method="post" class="card p-4 shadow-sm">
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label">Password</label>
+            <input asp-for="Password" class="form-control" type="password" />
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Login</button>
+    </form>
+</div>

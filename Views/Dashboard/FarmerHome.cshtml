@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Farmer Dashboard";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h3 class="mb-0">Welcome, @User.Identity.Name!</h3>
+        </div>
+
+        <div class="card-body">
+            <p class="lead">Manage your products and farm profile here.</p>
+
+            <div class="d-flex gap-2 mb-4">
+                <a asp-controller="Product" asp-action="Create" class="btn btn-outline-success">
+                    ➕ Add New Product
+                </a>
+                <a asp-controller="Product" asp-action="MyProducts" class="btn btn-outline-primary">
+                    📦 View My Products
+                </a>
+            </div>
+
+            <hr />
+
+            <h5 class="mb-3">📊 Product Summary</h5>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="border rounded p-3 text-center">
+                        <h6>Total Products</h6>
+                        <p class="fs-4 fw-bold text-success">@ViewBag.TotalProducts</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="border rounded p-3 text-center">
+                        <h6>Last Product</h6>
+                        <p class="fs-5">@ViewBag.LastProductName</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="border rounded p-3 text-center">
+                        <h6>Date Added</h6>
+                        <p class="fs-6 text-muted">@ViewBag.LastProductDate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
